@@ -27,7 +27,7 @@ def user_banner_directory_path(instance, filename):
         os.remove(full_path)
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
-    id = models.AutoField(primary_key=True)  # Use AutoField for integer primary key
+    id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
@@ -42,16 +42,10 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     verified = models.BooleanField(default=False)
     requested_verified = models.BooleanField(default=False)
 
-    picture = models.ImageField(
-        default='user/user_default_profile.png',
-        upload_to=user_profile_directory_path,
-        blank=True, null=True, verbose_name='Picture'
-    )
-    banner = models.ImageField(
-        default='user/user_default_bg.jpg',
-        upload_to=user_banner_directory_path,
-        blank=True, null=True, verbose_name='Banner'
-    )
+    picture = models.ImageField(default='user/user_default_profile.png', upload_to=user_profile_directory_path,
+                                blank=True, null=True, verbose_name='Picture')
+    banner = models.ImageField(default='user/user_default_bg.jpg', upload_to=user_banner_directory_path, blank=True,
+                               null=True, verbose_name='Banner')
 
     location = models.CharField(max_length=50, null=True, blank=True)
     url = models.CharField(max_length=80, null=True, blank=True)
@@ -61,6 +55,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ['first_name']
 
+    default_objects = CustomUserManager()
     objects = CustomUserManager()
 
     class Meta:
@@ -68,3 +63,5 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+    
