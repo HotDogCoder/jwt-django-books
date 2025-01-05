@@ -253,7 +253,7 @@ REST_AUTH = {
     'JWT_AUTH_HTTPONLY': True,
     'SESSION_LOGIN': False,
     'LOGOUT_ON_PASSWORD_CHANGE': True,
-    'JWT_AUTH_COOKIE_DOMAIN': '.localhost',
+    'JWT_AUTH_COOKIE_DOMAIN': os.environ.get('SITE_DOMAIN', 'localhost'),
     'JWT_AUTH_COOKIE_SAMESITE': 'Lax',
     'LOGIN_ON_EMAIL_CONFIRMATION': False
 }
