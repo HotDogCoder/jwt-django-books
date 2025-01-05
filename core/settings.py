@@ -149,14 +149,16 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'db_auth',
         'CLIENT': {
-            'host': f"mongodb+srv://{os.environ.get('DB_MONGO_USER')}:{os.environ.get('DB_MONGO_PASSWORD')}@cluster0.ml6w3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+            'host': f"mongodb+srv://{os.environ.get('DB_MONGO_USER')}:{os.environ.get('DB_MONGO_PASSWORD')}@cluster0.ml6w3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+            'uuidRepresentation': 'standard',
         },
     },
     'books': {
         'ENGINE': 'djongo',
         'NAME': 'db_books',
         'CLIENT': {
-            'host': f"mongodb+srv://{os.environ.get('DB_MONGO_USER')}:{os.environ.get('DB_MONGO_PASSWORD')}@cluster0.ml6w3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+            'host': f"mongodb+srv://{os.environ.get('DB_MONGO_USER')}:{os.environ.get('DB_MONGO_PASSWORD')}@cluster0.ml6w3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+            'uuidRepresentation': 'standard',
         },
     }
 }
