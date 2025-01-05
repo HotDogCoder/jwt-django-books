@@ -27,6 +27,7 @@ def user_banner_directory_path(instance, filename):
         os.remove(full_path)
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False, auto_created=True)
     username = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
